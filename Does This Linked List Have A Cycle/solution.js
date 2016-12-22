@@ -17,7 +17,7 @@
             curr = root;
         
         if (numNodes < 1) {
-            numNodes = 2;
+            numNodes = 1;
         }
         
         for (let i = 0; i < numNodes - 1; i++ ) {
@@ -47,14 +47,14 @@
         return false;
     }
     
-    for (let i = 2; i < 100; i++) {
+    for (let i = 1; i < 100; i++) {
         let listWithCycle = generateList(i, true);
         if (!containsCycle(listWithCycle)) {
             throw new Error("cycle detection failed when list length is " + i);
         }
     }
     
-    for (let i = 2; i < 100; i++) {
+    for (let i = 1; i < 100; i++) {
         let listWithoutCycle = generateList(i, false);
         if (containsCycle(listWithoutCycle)) {
             throw new Error("cycle erroneously detected in non-cycle list when list length is " + i);
