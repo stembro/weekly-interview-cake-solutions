@@ -52,24 +52,61 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var isSuperBalanced = function isSuperBalanced(root) {
-	    return true;
+	var isSuperBalanced = function isSuperBalanced(_ref) {
+	    var minDepth = _ref.minDepth,
+	        maxDepth = _ref.maxDepth;
+
+	    return !Number.isNaN(minDepth) && !Number.isNaN(maxDepth) && maxDepth - minDepth <= 1;
 	}; // Stephen Brown
 	// ontheheap@gmail.com
 	// Interview Cake - Balanced Binary Tree
 	// https://www.interviewcake.com/question/javascript/balanced-binary-tree
 
-	var root = new _binary_tree2.default(1);
+	var getMinAndMaxLeafDepths = function getMinAndMaxLeafDepths(root) {
+	    var maxDepth = Number.NaN;
+	    var minDepth = Number.NaN;
 
-	var root_left = root.insertLeft(2);
-	var root_left_left = root_left.insertLeft(3);
-	var root_left_right = root_left.insertRight(4);
+	    var preOrder = function preOrder(root) {
+	        var depth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-	var root_right = root.insertRight(5);
-	var root_right_left = root_right.insertLeft(6);
-	var root_right_right = root_right.insertRight(7);
+	        if (!root) {
+	            return;
+	        }
 
-	console.log(isSuperBalanced(root));
+	        if (!root.left && !root.right) {
+	            maxDepth = Number.isNaN(maxDepth) ? depth : Math.max(maxDepth, depth);
+	            minDepth = Number.isNaN(minDepth) ? depth : Math.min(minDepth, depth);
+	            return;
+	        }
+
+	        preOrder(root.left, depth + 1);
+	        preOrder(root.right, depth + 1);
+	    };
+
+	    preOrder(root);
+
+	    return {
+	        maxDepth: maxDepth,
+	        minDepth: minDepth
+	    };
+	};
+
+	var balancedRoot = new _binary_tree2.default(1);
+	var balancedRootLeft = balancedRoot.insertLeft(2);
+	var balancedRootLeftLeft = balancedRootLeft.insertLeft(3);
+	var balancedRootLeftRight = balancedRootLeft.insertRight(4);
+	var balancedRootRight = balancedRoot.insertRight(5);
+	var balancedRootRightLeft = balancedRootRight.insertLeft(6);
+	var balancedRootRightRight = balancedRootRight.insertRight(7);
+
+	var unbalancedRoot = new _binary_tree2.default(1);
+	var unbalancedRootLeft = unbalancedRoot.insertLeft(2);
+	var unbalancedRootLeftLeft = unbalancedRootLeft.insertLeft(3);
+	var unbalancedRootLeftLeftLeft = unbalancedRootLeftLeft.insertLeft(4);
+	var unbalancedRootRight = unbalancedRoot.insertRight(5);
+
+	console.log(isSuperBalanced(getMinAndMaxLeafDepths(balancedRoot)));
+	console.log(isSuperBalanced(getMinAndMaxLeafDepths(unbalancedRoot)));
 
 /***/ },
 /* 1 */
