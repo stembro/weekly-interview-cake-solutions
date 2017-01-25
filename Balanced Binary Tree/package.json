@@ -1,0 +1,24 @@
+{
+  "name": "balanced-binary-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "solution.js",
+  "scripts": {
+    "prebuild": "npm run lint",
+    "build": "babel-node ./tools/build.js",
+    "start": "node ./build/solution.js",
+    "lint": "eslint ./src",
+    "clean": "rimraf ./build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "chalk": "^1.1.3",
+    "eslint": "^3.14.0",
+    "webpack": "^1.14.0"
+  }
+}
