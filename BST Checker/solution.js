@@ -8,7 +8,6 @@ const { BinaryTreeNode, GetValidBST, GetInvalidBST } = require('./binary_tree.js
 let validBst = GetValidBST(),
     invalidBst = GetInvalidBST();
 
-
 const isValidBst = (bst) => {
     
     let lastSeenValue = -Infinity,
