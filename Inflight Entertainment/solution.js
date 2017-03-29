@@ -1,6 +1,6 @@
 // Stephen Brown
 // ontheheap@gmail.com
-// Interview Cake - Reverse Words
+// Interview Cake - Inflight Entertainment
 // https://www.interviewcake.com/question/javascript/inflight-entertainment
 
 'use strict';
