@@ -15,6 +15,10 @@ let result = (function(testInput) {
     }
     
     function stringToList(str) {
+        if (str.length === 0) {
+            return null;
+        }
+        
         let head = new LinkedListNode(str[0]);
         str.split('').slice(1).reduce((lastListItem, char) => {
             let node = new LinkedListNode(char);
@@ -26,6 +30,10 @@ let result = (function(testInput) {
     }
     
     function listToString(head) {
+        if (head === null) {
+            return '';
+        }
+        
         let curr = head;
         let str = '';
         while (curr !== null) {
@@ -76,6 +84,6 @@ let result = (function(testInput) {
     
     return listToString(reverseListInPlace(stringToList(testInput)));
     
-})("hello world!");
+})("abc");
 
 console.log(result);
